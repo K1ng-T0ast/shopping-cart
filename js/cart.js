@@ -18,19 +18,19 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() { 
+  document.getElementById('cart').innerHTML = '';
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
-function showCart() {
+function showCart() {}
 
   // TODO: Find the table body
-
   // TODO: Iterate over the items in the cart
   // TODO: Create a TR
-  // TODO: Create a TD for the delete link, quantity,  and the item
+  // TODO: Create a TD for the delete link, quantity,  and the ite
   // TODO: Add the TR to the TBODY and each of the TD's to the TR
 
-}
 
 function removeItemFromCart(event) {
 
