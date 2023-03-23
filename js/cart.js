@@ -61,7 +61,9 @@ function clearCart() {
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
-  const tableBodyElement = document.getElementById('cart');
+
+  let tableBodyElement = document.getElementById('cart');
+
   // TODO: Find the table body  
 
   for (let i = 0; i < state.cart.length; i++) {
