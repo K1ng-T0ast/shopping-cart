@@ -11,8 +11,9 @@ function populateForm() {
 
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
-  for (let i in state.allProducts) {
-    const optionElement = document.createElement('option');
+  for (let i = 0; i < state.allProducts.length; i++) {
+
+    let optionElement = document.createElement('option');
     optionElement.innerHTML = state.allProducts[i].name;
     optionElement.value = state.allProducts[i].name;
     optionElement.id = state.allProducts[i].name;
@@ -26,9 +27,9 @@ function populateForm() {
 // object, save the whole thing back to local storage and update the screen
 // so that it shows the # of items in the cart and a quick preview of the cart itself.
 function handleSubmit(event) {
-
   // TODO: Prevent the page from reloading
   event.preventDefault();
+
 
   // Do all the things ...
   addSelectedItemToCart();
@@ -36,8 +37,8 @@ function handleSubmit(event) {
   state.cart.updateCounter();
   updateCartPreview();
 
-document.getElementById('items').value = '';
-document.getElementById('quantity').value = '';
+  document.getElementById('items').value = '';
+  document.getElementById('quantity').value = '';
 
 }
 
@@ -54,10 +55,9 @@ function addSelectedItemToCart() {
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   let previewElement = document.getElementById('cartContents');
-  previewElement.innerHTML = '';
-
+  
   if (state.cart.items.length === 0) {
-    previewElement.innerHTML = 'Your cart is empty';
+    previewElement.innerHTML = 'Your cart is empty'
   } else {
     for (let i = 0; i < state.cart.items.length; i++){
       const item = state.cart.items[i];
@@ -65,11 +65,14 @@ function updateCartPreview() {
       itemElement.innerHTML = `${item.product} x ${item.quantity} <br>`;
       previewElement.appendChild(itemElement);
     }
+
   }
+ 
   // TODO: Get the item and quantity from the form
-  
+
+
   // TODO: Add a new element to the cartContents div with that information
-  
+
 }
 
 // Set up the "submit" event listener on the form.
