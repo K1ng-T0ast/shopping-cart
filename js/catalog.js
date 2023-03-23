@@ -13,9 +13,11 @@ function populateForm() {
   const selectElement = document.getElementById('items');
   for (let i in state.allProducts) {
     const optionElement = document.createElement('option');
-    optionElement.textContent = state.allProducts[i].name;
+    optionElement.innerHTML = state.allProducts[i].name;
     optionElement.value = state.allProducts[i].name;
+    optionElement.id = state.allProducts[i].name;
     selectElement.appendChild(optionElement);
+    console.log(state.allProducts[i].name);
   }
 
 }
@@ -34,6 +36,9 @@ function handleSubmit(event) {
   state.cart.updateCounter();
   updateCartPreview();
 
+document.getElementById('items').value = '';
+document.getElementById('quantity').value = '';
+
 }
 
 // TODO: Add the selected item and quantity to the cart
@@ -48,11 +53,24 @@ function addSelectedItemToCart() {
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
+  let previewElement = document.getElementById('cartContents');
+  previewElement.innerHTML = '';
+
+  if (state.cart.items.length === 0) {
+    previewElement.innerHTML = 'Your cart is empty';
+  } for (let i = 0; i < state.cart.items.length; i++) {
+    const item = state.cart.items[i];
+    previewElement.innerHTML += `${item.name} x ${item.quantity} <br>`;
+    previewElement.innerHTML += `Total: ${item.quantity * item.price} <br>`;
+    previewElement.innerHTML += `<br>`;
+    previewElement.appendChild(cartContents);
+  }
   // TODO: Get the item and quantity from the form
   
   // TODO: Add a new element to the cartContents div with that information
 
 }
+
 
 // Set up the "submit" event listener on the form.
 // This is the trigger for the app. When a user "submits" the form, it will
