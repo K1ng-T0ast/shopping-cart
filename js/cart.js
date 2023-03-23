@@ -52,7 +52,7 @@ function showCart() {
 
   }
 }
-=======
+
 function clearCart() {
   // let tableBodyElement = getElementsByTagName('tbody')[0];
   // tableBodyElement.innerHTML = '';
@@ -60,7 +60,7 @@ function clearCart() {
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
-  let tableBodyElement = getElementsByTagName('tbody');
+  let tableBodyElement = getElementById('cart');
   // TODO: Find the table body  
 
   for (let i = 0; i < state.cart.items.length; i++) {

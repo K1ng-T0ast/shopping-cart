@@ -58,19 +58,19 @@ function updateCartPreview() {
 
   if (state.cart.items.length === 0) {
     previewElement.innerHTML = 'Your cart is empty';
-  } for (let i = 0; i < state.cart.items.length; i++) {
-    const item = state.cart.items[i];
-    previewElement.innerHTML += `${item.name} x ${item.quantity} <br>`;
-    previewElement.innerHTML += `Total: ${item.quantity * item.price} <br>`;
-    previewElement.innerHTML += `<br>`;
-    previewElement.appendChild(cartContents);
+  } else {
+    for (let i = 0; i < state.cart.items.length; i++){
+      const item = state.cart.items[i];
+      const itemElement = document.createElement('div');
+      itemElement.innerHTML = `${item.product} x ${item.quantity} <br>`;
+      previewElement.appendChild(itemElement);
+    }
   }
   // TODO: Get the item and quantity from the form
   
   // TODO: Add a new element to the cartContents div with that information
-
+  
 }
-
 
 // Set up the "submit" event listener on the form.
 // This is the trigger for the app. When a user "submits" the form, it will
