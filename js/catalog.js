@@ -11,8 +11,9 @@ function populateForm() {
 
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
-  for (let i in state.allProducts) {
-    const optionElement = document.createElement('option');
+  for (let i = 0; i < state.allProducts.length; i++) {
+
+    let optionElement = document.createElement('option');
     optionElement.innerHTML = state.allProducts[i].name;
     optionElement.value = state.allProducts[i].name;
     optionElement.id = state.allProducts[i].name;
@@ -26,9 +27,9 @@ function populateForm() {
 // object, save the whole thing back to local storage and update the screen
 // so that it shows the # of items in the cart and a quick preview of the cart itself.
 function handleSubmit(event) {
-
   // TODO: Prevent the page from reloading
   event.preventDefault();
+
 
   // Do all the things ...
   addSelectedItemToCart();
@@ -36,8 +37,8 @@ function handleSubmit(event) {
   state.cart.updateCounter();
   updateCartPreview();
 
-document.getElementById('items').value = '';
-document.getElementById('quantity').value = '';
+  document.getElementById('items').value = '';
+  document.getElementById('quantity').value = '';
 
 }
 
@@ -54,21 +55,16 @@ function addSelectedItemToCart() {
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   let previewElement = document.getElementById('cartContents');
-  previewElement.innerHTML = '';
-
+  let pElement = document.createElement('p');
+  
   if (state.cart.items.length === 0) {
     previewElement.innerHTML = 'Your cart is empty';
-  } for (let i = 0; i < state.cart.items.length; i++) {
-    const item = state.cart.items[i];
-    previewElement.innerHTML += `${item.name} x ${item.quantity} <br>`;
-    previewElement.innerHTML += `Total: ${item.quantity * item.price} <br>`;
-    previewElement.innerHTML += `<br>`;
-    previewElement.appendChild(cartContents);
   }
+  pElement.textContent = `You have ${state.cart.items.length} items in your cart.`;
+  previewElement.appendChild(pElement);
   // TODO: Get the item and quantity from the form
-  
-  // TODO: Add a new element to the cartContents div with that information
 
+  // TODO: Add a new element to the cartContents div with that information
 }
 
 
