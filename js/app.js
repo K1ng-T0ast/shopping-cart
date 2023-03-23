@@ -8,8 +8,8 @@ const state = {
 
 // Cart constructor.
 const Cart = function(items) {
-  // this.items is an array of CartItem instances.
   this.items = items;
+  // this.items is an array of CartItem instances.
 };
 
 Cart.prototype.addItem = function(product, quantity) {
@@ -28,13 +28,13 @@ Cart.prototype.removeItem = function(item) {
     this.items.splice(this.items.indexOf(item), 1);
   } 
   // TODO: Fill in this instance method to remove one item from the cart.
-  // Note: You will have to decide what kind of parameter to pass in here!
 };
 
 Cart.prototype.updateCounter = function() {
-
+  let cartCountElemenet = document.getElementById('cart-count');
+  cartCountElemenet.innerHTML = this.items.length.toString();
   // TODO: Update the cart count in the header nav with the number of items in the Cart
-}
+};
 
 const CartItem = function(product, quantity) {
   this.product = product;
