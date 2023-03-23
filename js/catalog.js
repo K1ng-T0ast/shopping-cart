@@ -28,6 +28,7 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
+  event.preventDefault();
 
   // Do all the things ...
   addSelectedItemToCart();
@@ -43,8 +44,11 @@ document.getElementById('quantity').value = '';
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
+  let product = document.getElementById('items').value;
   // TODO: get the quantity
+  let quantity = document.getElementById('quantity').value;
   // TODO: using those, add one item to the Cart
+  state.cart.addItem(product, quantity);
 }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
@@ -62,7 +66,9 @@ function updateCartPreview() {
     previewElement.appendChild(cartContents);
   }
   // TODO: Get the item and quantity from the form
+  
   // TODO: Add a new element to the cartContents div with that information
+
 }
 
 
