@@ -54,25 +54,32 @@ function addSelectedItemToCart() {
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
-  let previewElement = document.getElementById('cartContents');
+  for (let i = 0; i < state.cart.items.length; i++){
+    const item = state.cart.items[i];
+    const itemElement = document.createElement('div');
+    itemElement.innerHTML = `${item.product} x ${item.quantity} <br>`;
+    previewElement.appendChild(itemElement);
+    console.log(item);
+  }
 
-  let prodName = document.getElementById('items').value.name;
-  let quant = document.getElementById('quantity').value;
-
-let p = document.createElement('p');
-p.innerHTML = `${prodName} x ${quant} <br>`;
-previewElement.appendChild(p);
-  
-  let ul = document.createElement('ul');
-  
-  previewElement.appendChild('ul');
-
-  
-  
-  state.cart.items.forEach(item =>{
-    ul.innerHTML = `<li> ${prodName} - ${quant} </li>`
-  });
 }
+
+
+
+  
+  // let prodName = document.getElementById('items').value.name;
+  // let quant = document.getElementById('quantity').value;
+
+  // let p = document.createElement('p');
+  // p.innerHTML = `${prodName} x ${quant} <br>`;
+  // previewElement.appendChild(p);
+  
+  // let ul = document.createElement('ul');
+  
+  // previewElement.appendChild('ul');
+  // state.cart.items.forEach(item =>{
+  //   ul.innerHTML = `<li> ${prodName} - ${quant} </li>`
+  // });
 
 
 
