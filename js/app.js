@@ -25,8 +25,8 @@ Cart.prototype.saveToLocalStorage = function() {
 };
 
 Cart.prototype.removeItem = function(item) {
-  if (this.items.indexOf(items) > -1) {
-    this.items.splice(this.items.indexOf(item), 1);
+  if (this.item.indexOf(items) > -1) {
+    this.item.splice(this.item.indexOf(item), 1);
   } 
   // TODO: Fill in this instance method to remove one item from the cart.
 };
