@@ -2,8 +2,9 @@
 
 'use strict';
 
+state.cart = new Cart([]);
 // Set up an empty cart for use on this page.
-state.cart = localStorage.cart ? new Cart(JSON.parse(localStorage.cart)) : new Cart([]);
+// state.cart = localStorage.cart ? new Cart(JSON.parse(localStorage.cart)) : new Cart([]);
 
 // On screen load, we call this method to put all of the product options
 // (the things in the state.allProducts array) into the drop down list.
@@ -11,12 +12,13 @@ function populateForm() {
 
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
-  for (let i = 0; i < state.allProducts.length; i++) {
+  for (let i in state.allProducts) {
+    let product = state.allProducts[i];
 
     let optionElement = document.createElement('option');
-    optionElement.innerHTML = state.allProducts[i].name;
-    optionElement.value = state.allProducts[i].name;
-    optionElement.id = state.allProducts[i].name;
+    optionElement.value = product.name;
+    optionElement.textContent = product.name;
+   
     selectElement.appendChild(optionElement);
     console.log(state.allProducts[i].name);
   }
@@ -54,13 +56,29 @@ function addSelectedItemToCart() {
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
-  for (let i = 0; i < state.cart.items.length; i++){
-    const item = state.cart.items[i];
-    const itemElement = document.createElement('div');
-    itemElement.innerHTML = `${item.product} x ${item.quantity} <br>`;
-    previewElement.appendChild(itemElement);
-    console.log(item);
-  }
+
+let itemsCart = document.getElementById('items').value;
+let quantityCart = document.getElementById('quantity').value;
+
+let divEl = document.getElementById('cartContents');
+let pEl = document.createElement('p');
+
+divEl.appendChild(pEl);
+
+pEl.textContent = `You have ${quantityCart} of ${itemsCart} in your cart`;
+
+
+
+
+
+
+  // for (let i = 0; i < state.cart.items.length; i++){
+  //   const item = state.cart.items[i];
+  //   const itemElement = document.createElement('div');
+  //   itemElement.innerHTML = `${item.product} x ${item.quantity} <br>`;
+  //   previewElement.appendChild(itemElement);
+  //   console.log(item);
+  // }
 
 }
 
