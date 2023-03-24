@@ -3,7 +3,7 @@
 'use strict';
 
 // Set up an empty cart for use on this page.
-state.cart = new Cart([]);
+state.cart = localStorage.cart ? new Cart(JSON.parse(localStorage.cart)) : new Cart([]);
 
 // On screen load, we call this method to put all of the product options
 // (the things in the state.allProducts array) into the drop down list.
@@ -55,25 +55,49 @@ function addSelectedItemToCart() {
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   let previewElement = document.getElementById('cartContents');
+
+  let prodName = document.getElementById('items').value.name;
+  let quant = document.getElementById('quantity').value;
+
+let p = document.createElement('p');
+p.innerHTML = `${prodName} x ${quant} <br>`;
+previewElement.appendChild(p);
   
-  if (state.cart.items.length === 0) {
-    previewElement.innerHTML = 'Your cart is empty'
-  } else {
-    for (let i = 0; i < state.cart.items.length; i++){
-      const item = state.cart.items[i];
-      const itemElement = document.createElement('div');
-      itemElement.innerHTML = `${item.product} x ${item.quantity} <br>`;
-      previewElement.appendChild(itemElement);
-    }
+  let ul = document.createElement('ul');
+  
+  previewElement.appendChild('ul');
 
-  }
+  
+  
+  state.cart.items.forEach(item =>{
+    ul.innerHTML = `<li> ${prodName} - ${quant} </li>`
+  });
+}
+
+
+
+  
  
-  // TODO: Get the item and quantity from the form
+ 
+  // if (state.cart.items.length === 0) {
+  //   previewElement.innerHTML = 'Your cart is empty'
+  // } else {
+  //   for (let i = 0; i < state.cart.items.length; i++){
+  //     const item = state.cart.items[i];
+  //     const itemElement = document.createElement('div');
+  //     itemElement.innerHTML = `${item.product} x ${item.quantity} <br>`;
+  //     previewElement.appendChild(itemElement);
+  //   }
 
+  // }
+
+ 
+  
+
+// TODO: Get the item and quantity from the form
 
   // TODO: Add a new element to the cartContents div with that information
 
-}
 
 // Set up the "submit" event listener on the form.
 // This is the trigger for the app. When a user "submits" the form, it will
