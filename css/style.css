@@ -6,7 +6,7 @@ html{
 
 body{
     font-family: 'Arial';
-    background-image: url(assets/duck.jpg);
+    background-image: url(./assets/duck.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
