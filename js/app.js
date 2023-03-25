@@ -24,10 +24,13 @@ Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
 };
 
-Cart.prototype.removeItem = function(item) {
-  if (this.item.indexOf(items) > -1) {
-    this.item.splice(this.item.indexOf(item), 1);
-  } 
+Cart.prototype.removeItem = function(name) {
+  
+  this.items = this.items.filter(item => item.product !== name);
+  
+  // if (this.item.indexOf(items) > -1) {
+  //   this.item.splice(this.item.indexOf(item), 1);
+  // } 
   // TODO: Fill in this instance method to remove one item from the cart.
 };
 

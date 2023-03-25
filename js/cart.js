@@ -21,15 +21,16 @@ function renderCart() {
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 
 function clearCart() {
-  let clearCartElement = document.querySelectorAll('cart');
-  clearCartElement.innerHTML = '';
+  let clearCartElement = document.getElementById('cart');
+  let cartBodyEl = clearCartElement.querySelector('tbody');
+  cartBodyEl.innerHTML = '';
 }
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
 
-  let cartBody = document.querySelector('#cart');
+  let cartBody = document.querySelector('#cart tbody');
   // TODO: Find the table body  
 
   for (let item of state.cart.items) {
@@ -37,21 +38,24 @@ function showCart() {
 
   let trElement = document.createElement('tr');
   // TODO: Create a TR
-
-  let tdDeleteElement = document.createElement('td');
-  let link = document.createElement('a');
-  link.setAttribute('delete', item.product);
-  link.textContent = 'X';
-  link.addEventListener('click', removeItemFromCart);
-  tdDeleteElement.appendChild(link);
-  
-
   let tdItemElement = document.createElement('td');
   tdItemElement.textContent = item.product;
-  
 
   let tdQuantityElement = document.createElement('td');
   tdQuantityElement.textContent = item.quantity;
+  
+
+  let tdDeleteElement = document.createElement('td');
+  let link = document.createElement('a');
+  link.setAttribute('href', '#');
+  link.setAttribute('delete', item.product);
+  link.textContent = 'X';
+  // link.addEventListener('click', removeItemFromCart);
+  tdDeleteElement.appendChild(link);
+  
+
+  
+
 
   // TODO: Create a TD for the delete link, quantity,  and the item
   cartBody.appendChild(trElement);
@@ -68,8 +72,7 @@ function showCart() {
 function removeItemFromCart(event) {
 
   let deleteLinks = event.target.getAttribute('delete');
-  let index = Array.prototype.indexOf.call(deleteLinks, event.target);
-    state.cart.removeItem(index);
+    state.cart.removeItem(deleteLinks);
     state.cart.saveToLocalStorage();
     renderCart();
 }
