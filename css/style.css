@@ -1,1 +1,108 @@
 /* TODO: Make it awesome */
+
+html{
+    height: 100%;
+}
+
+body{
+    font-family: 'Arial';
+    background-image: url(/assets/duck.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100%;
+}
+
+h1{
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+nav>ul>li{
+    display: inline-block;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+nav>ul>li>a:hover
+{
+    background-color: #eee;
+}
+
+nav{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+
+a{
+    text-decoration: none;
+}
+
+main>section>div>header>h1{
+    font-size: 35px;
+}
+
+.copy>ol{
+    text-align: center;
+    line-height: 1.6em;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+legend{
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 25px;
+    font-weight: 500;
+    
+}
+
+label>span{
+    margin-right: 5px;
+    margin-left: 20px;
+}
+
+#catalog{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+footer{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.deck.col-1{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+thead>tr:first-child{
+    border-collapse: separate;
+    margin-right: 20px;
+}
+
+div#cart-container.card{
+    margin-bottom: 30px;
+}
+
+div#cartContents.card{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#itemCount{
+    margin-left: 15px;
+}

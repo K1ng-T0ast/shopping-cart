@@ -65,7 +65,7 @@ let pEl = document.createElement('p');
 
 divEl.appendChild(pEl);
 
-pEl.textContent = `You have ${quantityCart} of ${itemsCart} in your cart`;
+pEl.textContent = `You have ${quantityCart} of ${itemsCart} in your cart!`;
 
 
 
